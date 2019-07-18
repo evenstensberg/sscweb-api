@@ -1,0 +1,397 @@
+@import "../../bourbon/bourbon";
+@import "constants";
+@import "mixins";
+@import "resets";
+@import "heroes";
+@import "body-pages";
+//@import "slideshow";
+
+html, body {
+    background-color: $clrBodyBg;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+a {
+    color: $clrLink;
+    text-decoration: none;
+    &:hover {
+        color: lighten($clrLink, $clrHoverLightenPercent);
+    }
+}
+
+.list-vertical {
+    margin-bottom: $interiorMargin * 2 !important;
+}
+
+nav, h1, h2, h3, a.arw, .l-hero-text, .t-footer, .t-list-steps:not(code), .callout, h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    letter-spacing: -0.03em;
+}
+
+nav, h2, h3, h4, .t-footer {
+    text-transform: uppercase;
+}
+
+.padX {
+    padding: 0 $marginV;
+}
+
+/******************************************** SYMBOLS */
+@font-face {
+    font-family: 'omct-symbols';
+    src:    url('../fonts/omct-symbols.eot?yyn1qj');
+    src:    url('../fonts/omct-symbols.eot?yyn1qj#iefix') format('embedded-opentype'),
+    url('../fonts/omct-symbols.ttf?yyn1qj') format('truetype'),
+    url('../fonts/omct-symbols.woff?yyn1qj') format('woff'),
+    url('../fonts/omct-symbols.svg?yyn1qj#omct-symbols') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/******************************************** ARCHETYPES */
+
+.btn {
+    white-space: nowrap;
+    &.major {
+        $clrHvr: lighten($clrBtnMajor, 10%);
+        @include linear-gradient(lighten($clrBtnMajor, 10%), $clrBtnMajor);
+        border-radius: $radiusBasic;
+        box-shadow: rgba(black, 0.4) 0 2px 10px;
+        color: white;
+        padding: 2px 20px;
+        &:hover {
+            @include linear-gradient(lighten($clrHvr, $clrHoverLightenPercent), $clrHvr);
+        }
+    }
+}
+
+a.arw {
+    text-transform: uppercase;
+    &:after {
+        @extend .icon;
+        content: ' \e900';
+        font-size: 0.8em;
+    }
+}
+
+@mixin assymCols($numCols) {
+    $w: 100%/$numCols;
+    .col.col-left { width: $w; }
+    .col.col-right { width: 100% - $w; }
+}
+
+.cols {
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    .col {
+        @include flex(1 1 auto);
+        margin-left: $marginV;
+        padding-left: $marginV;
+        position: relative;
+        &:first-child {
+            margin-left: 0;
+            padding-left: 0;
+        }
+    }
+    &.cols-equal .col {
+        @include flex-basis(0);
+    }
+    &.cols-1-2 {  @include assymCols(3);  }
+    &.cols-1-3 {  @include assymCols(4);  }
+    &.cols-1-4 {  @include assymCols(5);  }
+    &.cols-1-5 {  @include assymCols(6);  }
+}
+
+.icon {
+    font-family: 'omct-symbols' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+.screenshot {
+    width: 100%;
+}
+
+.video-wrapper {
+    position: relative;
+    height: 0;
+    &.aspect16x9 { padding-bottom: 56.25%; }
+    &.aspect3x1 { padding-bottom: 66.6%; }
+    &.aspect4x3 { padding-bottom: 75%; }
+
+    iframe.video {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.area-scrolling {
+    //@include test();
+    overflow: auto;
+}
+
+.position-wrapper {
+    position: relative;
+}
+
+.callout {
+    @include transform(translate(-50%,-50%));
+    background-color: $clrCalloutBg;
+    border-radius: 5px;
+    color: $clrCalloutFg;
+    font-weight: bold;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    z-index: 2;
+    &.line:after {
+        background-color: $clrCalloutBg;
+        content: "";
+        position: absolute;
+        z-index: -1;
+    }
+
+    &.r:after {
+        @include transform(translateY(-50%));
+        height: 3px; width: 50px;
+        top: 50%; left: 50%;
+    }
+
+    &.l:after {
+        @include transform(translateY(-50%));
+        height: 3px; width: 50px;
+        top: 50%; right: 50%;
+    }
+}
+
+/******************************************** PAGE SECTIONS */
+.l-page-section {
+    @extend .padX;
+    background-color: white;
+    color: $clrBodyBg;
+    font-size: 0.9rem;
+    padding-top: $marginV; padding-bottom: $marginV;
+
+    h1, h2, h3 { color: #666; }
+
+    h1 {
+        //color: lighten($clrBodyBg, 20%);
+        font-size: 2.25em;
+        text-align: center;
+        margin-bottom: $marginV;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        font-weight: 400;
+        margin-top: 0;
+    }
+
+    h4 {
+        margin-top: $interiorMargin * 2;
+        margin-bottom: 0;
+    }
+
+    &.c-ltgray {
+        background-color: #fbfbfb;
+    }
+
+    &.t-feature {
+        @include linear-gradient(#fff 90%, #f6f6f6);
+    }
+
+    .area-scrolling {
+        height: 200px;
+        margin-bottom: $interiorMarginLg;
+        width: 100%;
+    }
+}
+
+/******************************************** SPECIFIC ELEMENTS */
+.l-main {
+    // Push down content to make room for main nav.
+    // Don't do this if nav uses translucent look.
+    padding-top: $navH;
+}
+
+.btn.download {
+    $c: lighten($clrBtnMajor, 30%);
+    &:after {
+        @extend .icon;
+        color: $c;
+        content: ' \e901';
+        font-size: .8em;
+    }
+    &:hover:after {
+        color: lighten($c, $clrHoverLightenPercent);
+    }
+}
+
+.logo-bg {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-nasa {
+    @extend .logo-bg;
+    background-image: url('../images/logo-nasa.svg');
+    width: $navH * .9; //65px;
+}
+.logo-openmct {
+    @extend .logo-bg;
+    background-image: url('../images/logo-openmct.svg');
+    width: ($navH * .45) * 3.7; //130px; // width = 3.7 * 60% * navH
+}
+
+.github-logo {
+    &:before {
+        @extend .icon;
+        content: '\e950';
+        font-size: 2.5em;
+    }
+}
+
+nav.main-nav {
+    @extend .padX;
+    @include align-items(center);
+    box-sizing: border-box;
+    background: $clrBodyBg; //rgba(black, 0.8);
+    font-size: 0.8rem;
+    height: $navH;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    a {
+        $c: #ccc;
+        color: $c;
+        &:hover {
+            color: lighten($c, $clrHoverLightenPercent);
+        }
+    }
+
+    .l-logoholder {
+        height: 100%;
+        white-space: nowrap;
+        a.logo {
+            display: inline-block;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            &:not(:first-child) {
+                margin-left: $padNavElem;
+            }
+        }
+    }
+    .l-nav-links {
+        text-align: right;
+        white-space:nowrap;
+        .nav-link {
+            display: inline-block;
+            vertical-align: middle;
+            &:not(:first-child) {
+                margin-left: $padNavElem;
+            }
+        }
+    }
+}
+
+.t-what-boxes {
+    @include align-items(stretch);
+    background-color: #ccc;
+    padding-top: $marginVSm; padding-bottom: $marginVSm;
+    .col {
+        $pS: $marginV;
+        $graphicH: 100px;
+        @include display(flex);
+        @include flex-direction(column);
+        @include flex-wrap(nowrap);
+        border-left: 1px solid rgba(white, 0.5);
+        font-size: 0.9em;
+        position: relative;
+
+        .c-wrap {
+            @include flex(1 1 auto);
+        }
+        .graphic {
+            @include flex(0 1 auto);
+            margin-top: $interiorMargin;
+            display: block;
+        }
+        &:first-child {
+            border-left: none;
+        }
+    }
+}
+
+.t-list-steps {
+    b {
+        color: lighten($clrBodyBg, 20%);
+        display: inline-block;
+        width: 20px;
+    }
+    input.code-wrapper {
+        background-color: #333;
+        border-radius: $radiusBasic;
+        border: none;
+        box-sizing: border-box;
+        color: #ccc;
+        display: block;
+        font-family: monospace;
+        padding: 10px 10px;
+        width: 100%;
+        &:focus {
+            outline: none;
+        }
+        &::selection {
+            background-color: $clrLink;
+            color: white;
+        }
+
+        &::-moz-selection {
+            background-color: $clrLink;
+            color: white;
+        }
+    }
+    li {
+        margin-bottom: $interiorMarginLg;
+    }
+    p {
+        font-size: 1.25em;
+        text-transform: uppercase;
+    }
+}
+
+.t-footer {
+    $c: #999;
+    $logoW: 65px;
+    @include linear-gradient(rgba(black, 0.4), transparent 15px);
+    color: $c;
+    padding-bottom: 200px;
+    line-height: 140%;
+    b { color:lighten($c, 20%); }
+    .t-footer-content {
+        font-size: 0.8em;
+        padding-left: $logoW + 20px;
+        position: relative;
+        &:before {
+            @extend .logo-nasa;
+            content: '';
+            display: block;
+            height: $logoW;
+            position: absolute;
+            left: 0;
+        }
+    }
+}
