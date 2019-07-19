@@ -4,9 +4,12 @@
   "description": "API for Goddard",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "http-server"
   },
   "keywords": [],
   "author": "Even Stensberg",
-  "license": "Apache 2.0"
+  "license": "Apache 2.0",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
 }
