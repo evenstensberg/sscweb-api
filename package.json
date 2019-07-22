@@ -4,12 +4,17 @@
   "description": "API for Goddard",
   "main": "index.js",
   "scripts": {
-    "serve": "http-server"
+    "start": "swagger-repo serve",
+    "serve": "http-server",
+    "build": "swagger-repo build -o web_deploy",
+    "test": "swagger-repo validate",
+    "gh-pages": "swagger-repo gh-pages"
   },
   "keywords": [],
   "author": "Even Stensberg",
   "license": "Apache 2.0",
   "dependencies": {
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "swagger-repo": "^2.0.0-rc.13"
   }
 }
