@@ -1,0 +1,74 @@
+.l-hero-holder {
+    //box-shadow: rgba(black, 0.4) 0 -20px 25px 25px;
+    position: relative;
+    .l-hero-main {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        line-height: 230%;
+        .cols {
+            padding: 0 $marginH * 2;
+        }
+        .l-hero-text {
+            @include align-items(center);
+            @include linear-gradient(rgba(black, 0), rgba(black, 0.7) 40%);
+            color: #ccc;
+            position: absolute;
+            top: auto;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 40%;
+            * :not(.btn) {
+                text-shadow: rgba(black, 0.6) 0 1px 10px;
+            }
+
+            b {
+                color: white;
+            }
+        }
+    }
+}
+
+.p-home .l-hero-holder {  height: 540px;  }
+.p-body .l-hero-holder {
+    height: 240px;
+    .l-hero-main {
+        .cols {
+            .col-left {
+                text-transform: uppercase;
+            }
+        }
+        .l-hero-text {
+            background: none;
+            color: lighten($clrPgAbout, 50%);
+            height: 60%;
+        }
+    }
+}
+
+/******************************************** SPECIFIC HEROES */
+.p-home {
+    .hero-overview {
+        background-image: url('../images/hero-rp-dot-1.jpg');
+        .col-left {
+            font-size: 1.5em;
+        }
+        .col-right {
+            text-align: center;
+            text-transform: uppercase;
+            a {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.p-body {
+    &.about {
+        .l-hero-holder .l-hero-main {
+            background-image: url('../images/hero-body-packets-1.jpg');
+        }
+    }
+}

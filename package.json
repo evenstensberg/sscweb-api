@@ -1,0 +1,15 @@
+{
+  "name": "sscweb-api",
+  "version": "1.0.0",
+  "description": "API for Goddard",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-server"
+  },
+  "keywords": [],
+  "author": "Even Stensberg",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}

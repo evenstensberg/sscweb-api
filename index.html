@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="icon" type="image/png" href="res/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="res/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="res/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="res/css/normalize.min.css">
+    <link rel="stylesheet" href="res/css/styles.css">
+    <link rel="shortcut icon" href="res/images/favicons/favicon.ico">
+</head>
+
+<body class="p-home">
+    <nav class="cols main-nav">
+        <div class="col l-logoholder">
+                <a href="/" class="logo logo-nasa"></a>
+                <a href="/" class="nav-link no-text sscweb-api">SSC Web</a>
+        </div>
+        <div class="col l-nav-links">
+            <a href="about.html" class="nav-link">About SSC Web</a>
+            <a href="https://sscweb.sci.gsfc.nasa.gov/" class="nav-link" target="_blank">Get Started</a>
+            <a href="https://github.com/evenstensberg/sscweb-api" class="nav-link" target="_blank">API</a>
+            <a href="https://github.com/evenstensberg/sscweb-api" class="nav-link no-text github-logo"
+                target="_blank"></a>
+        </div>
+    </nav>
+    <div class="l-main">
+            <div id="redoc_container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/redoc/bundles/redoc.standalone.js"></script>
+    <script>
+      Redoc.init(
+        './openapi.json',
+        {"theme":{"colors":{"primary":{"main":"#32329f"}}},"hideDownloadButton":true},
+        document.getElementById("redoc_container")
+      );
+    </script>
+    </div>
+    <div class="l-page-section t-footer">
+        <div class="t-footer-content">
+            <ul class="list-vertical">
+                <li>NASA Official <b>Bernard Harris</b></li>
+                <li>Curator <b>Even Stensberg</b></li>
+            </ul>
+            <ul class="list-vertical">
+                    <li><a href="https://www.nasa.gov/about/highlights/HP_Privacy.html" target="_blank">Terms of Use</a></li>
+                    <li><a href="https://www.usa.gov/" target="_blank">USA.gov</a></li>
+                </ul>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+
+</html>
